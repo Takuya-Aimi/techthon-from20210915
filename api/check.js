@@ -1,6 +1,12 @@
 exports.getCheck = (req, res) => {
-  res.sendStatus(200);
+  res.json({
+    status_code: 200,
+    method: 'GET'
+  });
 }
 exports.postCheck = (req, res) => {
-  res.sendStatus(200);
+  res.json({
+    status_code: 200,
+    method: 'POST'
+  });
 }
