@@ -1,15 +1,15 @@
 exports.getDetail = async (req, res) => {
-  const { id } = req.params;
+  const paramId = req.params.id;
   const database = require('../database');
 
   const db = new database();
   await db.init();
 
   const common = require('../common');
-  const resultsGetStockById = await common.getStockById(db, id);
+  const resultsGetStockById = await common.getStockById(db, paramId);
 
   if (resultsGetStockById.length > 0) {
-    const { name, price, on_sale, count } = resultsGetStockById[0];
+    const { id, name, price, on_sale, count } = resultsGetStockById[0];
     res.json(
       {
         status_code: 200,
