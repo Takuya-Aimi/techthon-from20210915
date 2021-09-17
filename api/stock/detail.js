@@ -20,7 +20,7 @@ exports.getDetail = async (req, res) => {
     res.json(
       {
         status_code: 404,
-        method: 'PUT'
+        method: 'GET'
       }
     );
     db.release();
