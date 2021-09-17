@@ -12,7 +12,7 @@ module.exports = class database {
   }
   txBegin = async () => {
     try {
-      const result = await this.client.query('BEGIN');
+      const result = await this.client.query('BEGIN;');
     }
     catch (err) {
       throw err;
@@ -20,7 +20,7 @@ module.exports = class database {
   }
   txCommit = async () => {
     try {
-      const result = await this.client.query('COMMIT');
+      const result = await this.client.query('COMMIT;');
     }
     catch (err) {
       throw err;
@@ -28,7 +28,7 @@ module.exports = class database {
   }
   txRollback = async () => {
     try {
-      const result = await this.client.query('ROLLABACK');
+      const result = await this.client.query('ROLLABACK;');
     }
     catch (err) {
       throw err;
