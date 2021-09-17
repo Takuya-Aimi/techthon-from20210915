@@ -3,4 +3,16 @@ module.exports = app => {
   app.route('/check')
     .get(check.getCheck)
     .post(check.postCheck);
+
+  const init = require('./init');
+  app.route('/init')
+    .put(init.putInit);
+
+  const stockCreateSingle = require('./stock/create/single');
+  app.route('/stock/create/single')
+    .post(stockCreateSingle.postSingle);
+
+  const stockDetail = require('./stock/detail');
+  app.route('/stock/detail/:id')
+    .post(stockDetail.postDetail);
 }
