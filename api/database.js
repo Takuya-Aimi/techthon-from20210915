@@ -28,7 +28,7 @@ module.exports = class database {
   }
   txRollback = async () => {
     try {
-      const result = await this.client.query('ROLLABACK;');
+      const result = await this.client.query('ROLLBACK;');
     }
     catch (err) {
       throw err;
