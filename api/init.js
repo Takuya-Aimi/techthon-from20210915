@@ -1,4 +1,4 @@
-exports.putInit = (req, res) => {
+exports.putInit = async (req, res) => {
   const database = require('./database');
   const db = new database();
 

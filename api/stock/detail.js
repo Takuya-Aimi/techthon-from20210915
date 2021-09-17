@@ -1,4 +1,4 @@
-exports.getDetail = (req, res) => {
+exports.getDetail = async (req, res) => {
   const { id } = req.pramas;
   const database = require('../database');
 

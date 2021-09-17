@@ -1,4 +1,4 @@
-exports.postSingle = (req, res) => {
+exports.postSingle = async (req, res) => {
   const { id, name, price, on_sale, count } = req.body;
   const database = require('../../database');
 
