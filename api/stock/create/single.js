@@ -8,7 +8,7 @@ exports.postSingle = async (req, res) => {
   const common = require('../../common')
   const resultGetStockById = await common.getStockById(db, id);
 
-  if (resultGetStockById.length === 0) {
+  if (resultGetStockById.length !== 0) {
     res.json(
       {
         status_code: 400,
