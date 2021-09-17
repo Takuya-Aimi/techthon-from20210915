@@ -15,6 +15,7 @@ exports.postSingle = async (req, res) => {
         method: 'POST'
       }
     );
+    db.release();
     return;
   }
 

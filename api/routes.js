@@ -14,5 +14,5 @@ module.exports = app => {
 
   const stockDetail = require('./stock/detail');
   app.route('/stock/detail/:id')
-    .post(stockDetail.getDetail);
+    .get(stockDetail.getDetail);
 }

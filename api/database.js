@@ -3,7 +3,8 @@ const { Pool } = require('pg');
 module.exports = class database {
   constructor() {
     this.pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      //connectionString: process.env.DATABASE_URL,
+      connectionString: 'postgres://postgres:yiir45kmY7@localhost:5432/techthon-from20210915',
       max: 1,
     });
   }
