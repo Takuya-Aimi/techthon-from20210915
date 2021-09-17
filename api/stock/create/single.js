@@ -8,7 +8,7 @@ exports.postSingle = async (req, res) => {
   const common = require('../../common')
   const resultGetStockById = await common.getStockById(db, id);
 
-  if (resultGetStockById.length !== 0) {
+  if (resultGetStockById) {
     res.json(
       {
         status_code: 400,
@@ -16,34 +16,30 @@ exports.postSingle = async (req, res) => {
       }
     );
     db.release();
-    return;
-  }
-
-  try {
-    await db.txBegin();
+  } else {
     try {
-      const insertStock = `INSERT INTO stock VALUES (${id}, '${name}', ${price}, ${on_sale}, ${count});`;
-      await db.query(insertStock);
-      await db.txCommit();
-
-
-    }
-    catch (err) {
-      await db.txRollback();
+      await db.txBegin();
+      try {
+        const sqlInsertStock = `INSERT INTO stock VALUES (${id}, '${name}', ${price}, ${on_sale}, ${count});`;
+        await db.query(sqlInsertStock);
+        await db.txCommit();
+      }
+      catch (err) {
+        await db.txRollback();
+        throw err;
+      }
+    } catch (err) {
+      console.log(err);
       throw err;
-    }
-    finally {
+    } finally {
       db.release();
     }
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
 
-  res.json(
-    {
-      status_code: 201,
-      method: 'POST'
-    }
-  );
+    res.json(
+      {
+        status_code: 201,
+        method: 'POST'
+      }
+    );
+  }
 }
