@@ -13,7 +13,7 @@ exports.getDetail = async (req, res) => {
       {
         status_code: 200,
         method: 'GET',
-        item: resultsGetStockById[0]
+        item: resultsGetStockById
       }
     );
   } else {
