@@ -3,8 +3,7 @@ const { Pool } = require('pg');
 module.exports = class database {
   constructor() {
     this.pool = new Pool({
-      //connectionString: process.env.DATABASE_URL,
-      connectionString: 'postgres://postgres:yiir45kmY7@localhost:5432/techthon-from20210915',
+      connectionString: process.env.DATABASE_URL,
       max: 1,
     });
   }
@@ -13,7 +12,7 @@ module.exports = class database {
   }
   txBegin = async () => {
     try {
-      const result = await this.client.query('BEGIN;');
+      await this.client.query('BEGIN;');
     }
     catch (err) {
       throw err;
@@ -21,7 +20,7 @@ module.exports = class database {
   }
   txCommit = async () => {
     try {
-      const result = await this.client.query('COMMIT;');
+      await this.client.query('COMMIT;');
     }
     catch (err) {
       throw err;
@@ -29,7 +28,7 @@ module.exports = class database {
   }
   txRollback = async () => {
     try {
-      const result = await this.client.query('ROLLBACK;');
+      await this.client.query('ROLLBACK;');
     }
     catch (err) {
       throw err;

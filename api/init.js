@@ -8,6 +8,8 @@ exports.putInit = async (req, res) => {
     await db.txBegin();
 
     try {
+      await db.query('DELETE FROM purchase_item;');
+      await db.query('DELETE FROM purchase;');
       await db.query('DELETE FROM stock;');
       await db.query("INSERT INTO stock VALUES (1, 'pen', 100, true, 100);");
       await db.txCommit();
@@ -18,6 +20,7 @@ exports.putInit = async (req, res) => {
   }
   catch (err) {
     console.log(err);
+    res.sendStatus(500);
     throw err;
   }
   finally {

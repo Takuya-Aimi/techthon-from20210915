@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Takuya-Aimi/techthon-from20210915#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "pg": "^8.7.1"
   }
 }
